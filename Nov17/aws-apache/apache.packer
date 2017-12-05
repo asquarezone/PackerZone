@@ -1,0 +1,29 @@
+{
+    "variables":{
+        "access_key_aws": "enter your access key",
+        "secret_key_aws": "oP4IjnPkHnAJ5ma51iHftX/QiWYMYJduJvY9u6kO",
+        "region" : "us-west-2",
+        "ami_name": "apachefrompackerwithvar"
+    },
+    "builders": [
+        {
+            "type": "amazon-ebs",
+            "access_key": "{{user `access_key_aws`}}",
+            "secret_key": "{{user `secret_key_aws`}}",
+            "region": "{{user `region`}}",
+            "source_ami": "ami-25cf1c5d",
+            "instance_type": "t2.micro",
+            "ssh_username": "ubuntu",
+            "ami_name": "{{user `ami_name`}}"
+        }
+    ],
+    "provisioners":[
+        {
+            "type": "shell",
+            "inline": [
+                            "sudo apt-get update",
+                            "sudo apt-get install apache2 -y"
+                      ]
+        }
+    ]
+}
