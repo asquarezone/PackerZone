@@ -1,0 +1,6 @@
+{
+    "aws_region": "us-east-2",
+    "aws_ami_id" : "ami-db710fa3",
+    "aws_username": "ubuntu"
+}
+//packer build -var-file var.json -var "aws_region=us-west-1" nginx.json
