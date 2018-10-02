@@ -1,0 +1,21 @@
+{
+       
+    "builders":[
+        {
+            "type" : "amazon-ebs",
+            "region": "us-west-2",
+            "source_ami": "ami-0e32ec5bc225539f5",
+            "access_key": "AKIAJNX7V6SESN5XLAXA",
+            "secret_key": "{{user `secretkey`}}",
+            "ssh_username": "ubuntu",
+            "instance_type": "t2.micro",
+            "ami_name": "image-from-packer"
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "shell",
+            "inline": ["sudo apt-get update", "sudo apt-get install git -y"]
+          }
+    ]
+}

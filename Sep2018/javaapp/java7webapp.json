@@ -1,0 +1,25 @@
+{
+    "variables":{
+        "secret":"",
+        "access":"",
+        "aminame":"gameoflife"
+    },
+    "builders":[
+        {
+            "type" : "amazon-ebs",
+            "region": "us-west-2",
+            "source_ami": "ami-0e32ec5bc225539f5",
+            "access_key": "{{user `access`}}",
+            "secret_key": "{{user `secret`}}",
+            "ssh_username": "ubuntu",
+            "instance_type": "t2.micro",
+            "ami_name": "{{user `aminame`}}"
+        }
+    ],
+    "provisioners":[
+        {
+            "type": "shell",
+            "script": "./deploy.sh"
+        }
+    ]
+}
