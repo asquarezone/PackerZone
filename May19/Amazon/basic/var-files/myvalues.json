@@ -1,0 +1,13 @@
+{
+    "my_aws_access_key": "",
+        "my_aws_secret_key": "",
+        "my_instance_size": "t2.micro",
+        "my_region": "us-west-2",
+        "sourceami": "ami-005bdb005fb00e791",
+        "client_id": "5e6ccc9b-faa6-4438-8121-4a597c9cbee1",
+            "client_secret": "287712ef-42bf-4bae-8d6f-dd3cb0b710c9",
+            "tenant_id": "aeefb57f-cec2-4491-bf00-268b13adf57b",
+            "subscription_id": "58376b06-f20d-4a7a-a75d-cbd03b2135a6"
+}
+
+// packer build -var-file <path to varfilejson> good.json

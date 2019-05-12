@@ -1,0 +1,30 @@
+{
+    "variables":{
+        "my_aws_access_key": "",
+        "my_aws_secret_key": "",
+        "my_instance_size": "t2.micro",
+        "my_region": "us-west-2",
+        "sourceami": "ami-005bdb005fb00e791"
+    },
+    "builders":[
+        {
+            "type": "amazon-ebs",
+            "ami_name": "openmrs-{{isotime | clean_resource_name}}", 
+            "source_ami": "{{user `sourceami`}}",
+            "region": "{{user `my_region`}}",
+            "secret_key":"{{user `my_aws_secret_key`}}",
+            "access_key":"{{user `my_aws_access_key`}}",
+            "instance_type": "{{user `my_instance_size`}}",
+            "ssh_username": "ubuntu"
+        }
+    ],
+    "provisioners":[
+        {
+            "type": "shell",
+            "inline": [
+                "sudo apt-get update",
+                "sudo apt-get install git -y", 
+                "sudo apt-get install tree -y"]
+        }
+    ]
+}

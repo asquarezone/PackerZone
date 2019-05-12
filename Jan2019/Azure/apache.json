@@ -1,0 +1,28 @@
+{
+    "builders": [{
+      "type": "azure-arm",
+  
+      "client_id": "d9c0cc6c-03dd-466a-9745-1f5bc013a30e",
+      "client_secret": "405c41b4-ddc5-4cc1-b473-ae469b89d7f1",
+      "tenant_id": "aeefb57f-cec2-4491-bf00-268b13adf57b",
+      "subscription_id": "58376b06-f20d-4a7a-a75d-cbd03b2135a6",
+  
+      "managed_image_resource_group_name": "myResourceGroup",
+      "managed_image_name": "myPackerImage",
+  
+      "os_type": "Linux",
+      "image_publisher": "Canonical",
+      "image_offer": "UbuntuServer",
+      "image_sku": "16.04-LTS",
+      
+      "location": "East US",
+      "vm_size": "Standard_B1S"
+    }],
+    "provisioners":[{
+        "type": "shell",
+        "inline": [
+          "sudo apt-get update",
+          "sudo apt-get install apache2 -y"
+        ]
+      }]
+  }
